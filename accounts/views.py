@@ -1,7 +1,9 @@
-from django.shortcuts import render
-from django.http.response import HttpResponse
+from django.shortcuts import render, redirect
 # Create your views here.
 
 
 def home(request):
-    return HttpResponse('<h1>Accounts Home</h1>')
+    if request.user.is_authenticated:
+        return render(request, 'accounts/home.html')
+    else:
+        return redirect('/accounts/login/')
