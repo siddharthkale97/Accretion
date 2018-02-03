@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from accounts.forms import RegistrationForm
+from django.contrib.auth.models import User
 # Create your views here.
 
 def register(request):
@@ -23,3 +24,6 @@ def home(request):
         return render(request, 'accounts/home.html')
     else:
         return redirect('/accounts/login/')
+def profile(request):
+    args = {'user':request.user}
+    return render(request, 'accounts/profile.html', args)
