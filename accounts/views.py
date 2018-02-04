@@ -15,6 +15,8 @@ def register(request):
              if form.is_valid():
                  form.save()
                  return redirect('/accounts/home/')
+             else:
+                 return redirect('/accounts/register/')
          else:
              form = RegistrationForm()
              args = {'form': form}
