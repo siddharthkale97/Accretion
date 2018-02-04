@@ -122,3 +122,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/accounts/home/'
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+# USE THIS FOR EMAIL SERVER CHANGE THIS WHILE DEPLOYMENT python -m smtpd -n -c DebuggingServer localhost:1025
