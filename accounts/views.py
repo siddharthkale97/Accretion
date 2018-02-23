@@ -8,13 +8,13 @@ from django.contrib.auth import update_session_auth_hash
 
 def register(request):
      if request.user.is_authenticated:
-         return redirect('/accounts/home')
+         return redirect('/home/')
      else:
          if request.method == 'POST':
              form = RegistrationForm(request.POST)
              if form.is_valid():
                  form.save()
-                 return redirect('/accounts/home/')
+                 return redirect('/home/')
              else:
                  return redirect('/accounts/register/')
          else:
@@ -25,7 +25,7 @@ def register(request):
 
 def home(request):
     if request.user.is_authenticated:
-        return render(request, 'accounts/home.html')
+        return redirect('/home/')
     else:
         return redirect('/accounts/login/')
 
@@ -60,4 +60,3 @@ def change_password(request):
         form = PasswordChangeForm(user=request.user)
         args = {'form': form}
         return render(request, 'accounts/edit_password.html', args)
-
